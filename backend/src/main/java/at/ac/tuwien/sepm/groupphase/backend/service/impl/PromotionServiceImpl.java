@@ -14,6 +14,7 @@ import org.springframework.cache.annotation.Caching;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
+import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 
 import java.lang.invoke.MethodHandles;
@@ -51,7 +52,7 @@ public class PromotionServiceImpl implements PromotionService {
         } else if (pageCount > 50) {
             pageCount = 50;
         }
-        Pageable returnPage = PageRequest.of(page, pageCount);
+        Pageable returnPage = PageRequest.of(page, pageCount, Sort.by("expirationDate").descending());
         return promotionRepository.findAll(returnPage);
     }
 

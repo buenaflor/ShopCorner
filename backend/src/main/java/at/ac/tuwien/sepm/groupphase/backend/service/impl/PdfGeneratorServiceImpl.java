@@ -34,7 +34,11 @@ public class PdfGeneratorServiceImpl implements PdfGeneratorService {
     @Override
     public void setPdfInvoiceCanceled(Invoice invoice) {
         LOGGER.trace("createPdfInvoiceOperator({})", invoice);
-        if (invoice.getCustomerId() == null) {
+        if (!this.invoiceArchiveService.invoiceExistsByInvoiceNumber(invoice.getInvoiceNumber()) && invoice.getCustomerId() == null) {
+            this.invoiceArchiveService.createInvoiceArchive(invoice.getInvoiceNumber(), pdfGenerator.generatePdf(invoice, null));
+        } else if (!this.invoiceArchiveService.invoiceExistsByInvoiceNumber(invoice.getInvoiceNumber()) && invoice.getCustomerId() != null) {
+            this.invoiceArchiveService.createInvoiceArchive(invoice.getInvoiceNumber(), pdfGenerator.generatePdf(invoice, this.orderService.getOrderByInvoice(invoice)));
+        } else if (invoice.getCustomerId() == null) {
             this.invoiceArchiveService.updateInvoiceArchive(invoice.getInvoiceNumber(), pdfGenerator.generatePdf(invoice, null));
         } else {
             this.invoiceArchiveService.updateInvoiceArchive(invoice.getInvoiceNumber(), pdfGenerator.generatePdf(invoice, this.orderService.getOrderByInvoice(invoice)));
