@@ -4,6 +4,7 @@ import {Pagination} from '../../../dtos/pagination';
 import {OrderService} from '../../../services/order/order.service';
 import {InvoiceService} from '../../../services/invoice/invoice.service';
 import {faCog} from '@fortawesome/free-solid-svg-icons';
+import {OperatorAuthService} from "../../../services/auth/operator-auth.service";
 
 @Component({
   selector: 'app-operator-order',
@@ -19,7 +20,7 @@ export class OperatorOrderComponent implements OnInit {
   collectionSize = 0;
   faCog = faCog;
 
-  constructor(private orderService: OrderService, private invoiceService: InvoiceService) { }
+  constructor(private orderService: OrderService, private invoiceService: InvoiceService, public authService: OperatorAuthService) { }
 
   ngOnInit(): void {
     this.loadOrdersForPage();

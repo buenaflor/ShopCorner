@@ -19,7 +19,7 @@
         <li class="my-2 p-2" routerLink="/operator/home" routerLinkActive="is-active">
           <span>Startseite</span>
         </li>
-        <li class="my-2 p-2" routerLink="/operator/shop" routerLinkActive="is-active">
+        <li *ngIf="role === 'ADMIN'" class="my-2 p-2" routerLink="/operator/shop" routerLinkActive="is-active">
           <span>Shop</span>
         </li>
         <li class="my-2 p-2" routerLink="/operator/invoices" routerLinkActive="is-active">

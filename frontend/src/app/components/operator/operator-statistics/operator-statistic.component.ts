@@ -41,7 +41,7 @@ export class OperatorStatisticComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.start.setDate(this.start.getDate() - 90);
+    this.start.setDate(this.start.getDate() - 91);
     this.startPicker = this.start.toISOString().split('T')[0];
     this.endPicker = this.end.toISOString().split('T')[0];
     this.loadInvoicesForTime();

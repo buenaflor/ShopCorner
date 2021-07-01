@@ -53,7 +53,7 @@
     Gesamtpreis (inkl. MwSt.):
   </h5>
   <span>{{isCanceled ? order.invoice.amount * (-1) : order.invoice.amount.toFixed(2)}} €
-    <button class="btn btn-primary float-right mr-4" *ngIf="!isCanceled&&!isCancelable"
+    <button class="btn btn-primary float-right mr-4" *ngIf="!isCanceled&&isCancelable"
             (click)="attemptToCancelInvoiceModal()"> Stornieren
     </button>
     <button class="btn btn-primary float-right mr-4" (click)="downloadInvoice(order.invoice.id, order.invoice.date)">

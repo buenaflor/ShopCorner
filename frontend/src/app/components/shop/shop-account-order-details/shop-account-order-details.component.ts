@@ -51,7 +51,6 @@ export class ShopAccountOrderDetailsComponent implements OnInit {
     invoice.date = '';
     invoice.amount = 0;
     this.order = new Order(0, invoice, new Customer(0, '', '', '', '', address, ''), null);
-    this.cancellationPeriod();
     const id = +this.route.snapshot.paramMap.get('id');
 
     this.orderService.getOrderById(id)
@@ -69,6 +68,7 @@ export class ShopAccountOrderDetailsComponent implements OnInit {
         this.month = this.order.invoice.date.substring(5, 7);
         this.year = this.order.invoice.date.substring(0, 4);
       });
+    this.cancellationPeriod();
   }
 
   vanishError() {

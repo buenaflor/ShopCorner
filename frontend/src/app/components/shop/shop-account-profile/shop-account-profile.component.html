@@ -43,14 +43,14 @@
       </div>
       <div>
         <label for="password">{{isEditMode ? 'Altes Passwort' : 'Passwort'}}</label>
-        <input *ngIf="isEditMode" type="text" name="password" formControlName="password" class="form-control"
+        <input *ngIf="isEditMode" type="password" name="password" formControlName="password" class="form-control"
                id="password">
         <!-- We don't actually show the password here since the backend should never send it this is just a placeholder -->
         <span *ngIf="!isEditMode">••••••••</span>
       </div>
       <div *ngIf="isEditMode">
         <label for="newPassword">Neues Passwort</label>
-        <input *ngIf="isEditMode" type="text" name="newPassword" formControlName="newPassword" class="form-control"
+        <input *ngIf="isEditMode" type="password" name="newPassword" formControlName="newPassword" class="form-control"
                id="newPassword">
       </div>
       <small placement="left"

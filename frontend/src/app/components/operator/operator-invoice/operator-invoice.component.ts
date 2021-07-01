@@ -89,14 +89,17 @@ export class OperatorInvoiceComponent implements OnInit {
     }
     return false;
   }
+
   isDetailedInvoiceCanceled() {
     if (this.detailViewInvoice !== undefined) {
       return this.detailViewInvoice.invoiceType === InvoiceType.canceled;
     }
     return false;
   }
+
   canceledInvoice() {
     this.invoiceService.setInvoiceCanceled(this.detailViewInvoice).subscribe(() => {
+      this.loadInvoicesForPage();
     }, (error) => {
       this.error = true;
       this.errorMessage = error;
